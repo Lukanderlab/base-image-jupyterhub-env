@@ -59,7 +59,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa -y && \
     python3-distutils-extra
 
 RUN ln -s /usr/bin/python3.9 /usr/local/bin/python3 && \
-    ln-s /usr/bin/python3.9 /usr/local/bin/python
+    ln -s /usr/bin/python3.9 /usr/local/bin/python
 
 RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.9
 
@@ -114,12 +114,6 @@ RUN git clone --depth 10 https://github.com/Kitware/CMake ~/cmake && \
     cd ~/cmake && \
     ./bootstrap && \
     make -j"$(nproc)" install
-
-# Instala Node.js y npm
-RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - && \
-    $APT_INSTALL \
-    nodejs
-
 # Instalamos las bibliotecas comunes que necesitas, puedes agregar más según tus necesidades
 RUN pip install numpy pandas matplotlib seaborn scikit-learn jupyterlab
 
