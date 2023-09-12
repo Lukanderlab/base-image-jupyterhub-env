@@ -118,13 +118,15 @@ RUN git clone --depth 10 https://github.com/Kitware/CMake ~/cmake && \
 RUN pip install numpy pandas matplotlib seaborn scikit-learn jupyterlab
 
 # Creamos cuatro directorios separados para los entornos de JupyterLab
-RUN mkdir /rootv1 /rootv2 /rootv3 /rootv4
+RUN mkdir /rootv1 /rootv2 /rootv3 /rootv4 /rootv5 /rootv6 
 
 # Configuramos los puertos para cada entorno de JupyterLab
-EXPOSE 8888 8889 8890 8891
+EXPOSE 8888 8889 8890 8891 8892 8893
 
 # Ejecutamos cuatro instancias de JupyterLab en diferentes puertos y directorios
 CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--notebook-dir=/rootv1", "--allow-root", "--ServerApp.token=''"]
 CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8889", "--no-browser", "--notebook-dir=/rootv2", "--allow-root", "--ServerApp.token=''"]
 CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8890", "--no-browser", "--notebook-dir=/rootv3", "--allow-root", "--ServerApp.token=''"]
 CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8891", "--no-browser", "--notebook-dir=/rootv4", "--allow-root", "--ServerApp.token=''"]
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8892", "--no-browser", "--notebook-dir=/rootv5", "--allow-root", "--ServerApp.token=''"]
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8893", "--no-browser", "--notebook-dir=/rootv6", "--allow-root", "--ServerApp.token=''"]
